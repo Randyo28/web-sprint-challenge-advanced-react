@@ -3,9 +3,10 @@ import axios from "axios";
 
 export default class PlantList extends Component {
   state = {
-    plants: []
+    plants: [] //create empty array state for plants
   }
 
+  //when component renders an axios call will be called and sets empty plant state with response plant data using class component setState 
   componentDidMount(){
     axios
     .get('http://localhost:3333/plants')

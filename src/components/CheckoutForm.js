@@ -7,6 +7,7 @@ import useForm from '../hooks/useForm';
 
 const CheckoutForm = (props) => {
   
+  //useForm custom hook using values and functions that will be passed in this component
   const {values, showSuccessMessage, handleChanges, handleSubmit} = useForm()
 
   return (

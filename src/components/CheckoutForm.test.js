@@ -7,12 +7,17 @@ import CheckoutForm from "./CheckoutForm";
 
 test("form header renders", () => {
     render(<CheckoutForm/>)
-    // screen.debug()
+
+    const header = screen.queryByText(/Checkout Form/i)
+    
+    expect(header).toBeInTheDocument()
+    // screen.debug(header)
 });
 
 test("form shows success message on submit with form details", async () => {
-    render(<CheckoutForm/>)
+    render(<CheckoutForm/>) //rendered component
 
+    //selecting all label inputs and button
     const firstName = screen.queryByLabelText(/first name/i)
     const lastName = screen.queryByLabelText(/last name/i)
     const address = screen.queryByLabelText(/address/i)
@@ -21,15 +26,19 @@ test("form shows success message on submit with form details", async () => {
     const zip = screen.queryByLabelText(/zip/i)
     const submitButton = screen.queryByRole('button')
 
+    //creating userEvent with typing inputs and clicking button
     userEvent.type(firstName, 'Randy')
     userEvent.type(lastName, 'Ortiz')
     userEvent.type(address, '1208 East 81st')
     userEvent.type(city, 'Brooklyn')
     userEvent.type(state, 'NY')
     userEvent.type(zip, '11040')
-    
     userEvent.click(submitButton)
     
     const success = await screen.queryByTestId('successMessage')
-    screen.debug(success)
+    
+    //expecting success Message to be inside the component after clicking submit
+    expect(success).toBeInTheDocument()
+     screen.debug(success)
+
 });
