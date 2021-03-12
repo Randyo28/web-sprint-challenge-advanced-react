@@ -1,17 +1,10 @@
 // write your custom hook here to control your checkout form
 import { useState } from 'react'
 
-const useForm = () => {
+const useForm = (initialValues) => {
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [values, setValues] = useState({ //set initialValue to empty strings
-    firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
-  });
+  const [values, setValues] = useState(initialValues); //InitialValue of each input will be passed 
 
   const handleChanges = (e) => {
       const {name, value} = e.target //destructed e.target to use name and value

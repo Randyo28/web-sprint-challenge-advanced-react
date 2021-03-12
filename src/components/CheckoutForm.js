@@ -6,9 +6,19 @@ import useForm from '../hooks/useForm';
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
+
+  const initialValues = { 
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+  }
   
   //useForm custom hook using values and functions that will be passed in this component
-  const {values, showSuccessMessage, handleChanges, handleSubmit} = useForm()
+  //InitialValues passed in useForm hook so that it can be reusable for other form components
+  const {values, showSuccessMessage, handleChanges, handleSubmit} = useForm(initialValues)
 
   return (
     <>
